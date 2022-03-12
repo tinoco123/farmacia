@@ -8,12 +8,12 @@ package farmaciasimi;
  *
  * @author tinoc
  */
-public class Farmacia extends javax.swing.JFrame {
+public class verPedidos extends javax.swing.JFrame {
 
     /**
      * Creates new form Farmacia
      */
-    public Farmacia() {
+    public verPedidos() {
         initComponents();
         this.setLocationRelativeTo(this);
     }
@@ -121,11 +121,6 @@ public class Farmacia extends javax.swing.JFrame {
         btnVerPedidos.setIconTextGap(15);
         btnVerPedidos.setRequestFocusEnabled(false);
         btnVerPedidos.setRolloverEnabled(false);
-        btnVerPedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerPedidosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panVerPedidoLayout = new javax.swing.GroupLayout(panVerPedido);
         panVerPedido.setLayout(panVerPedidoLayout);
@@ -160,23 +155,23 @@ public class Farmacia extends javax.swing.JFrame {
         panCenter.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel2.setText("Agregar pedido");
+        jLabel2.setText("Ver Pedidos");
 
         javax.swing.GroupLayout panCenterLayout = new javax.swing.GroupLayout(panCenter);
         panCenter.setLayout(panCenterLayout);
         panCenterLayout.setHorizontalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panCenterLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
+                .addContainerGap(141, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addGap(306, 306, 306))
         );
         panCenterLayout.setVerticalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCenterLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(222, 222, 222)
                 .addComponent(jLabel2)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         getContentPane().add(panCenter, java.awt.BorderLayout.CENTER);
@@ -185,14 +180,10 @@ public class Farmacia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
-        
-    }//GEN-LAST:event_btnPedidoActionPerformed
-
-    private void btnVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPedidosActionPerformed
-        verPedidos verPedidos = new verPedidos();
-        verPedidos.setVisible(true);
+        Farmacia farmacia = new Farmacia();
+        farmacia.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnVerPedidosActionPerformed
+    }//GEN-LAST:event_btnPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,20 +202,21 @@ public class Farmacia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Farmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(verPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Farmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(verPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Farmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(verPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Farmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(verPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Farmacia().setVisible(true);
+                new verPedidos().setVisible(true);
             }
         });
     }
