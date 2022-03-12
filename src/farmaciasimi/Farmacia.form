@@ -163,6 +163,9 @@
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPedidoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -218,6 +221,9 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="rolloverEnabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerPedidosActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -15,6 +15,7 @@ public class Farmacia extends javax.swing.JFrame {
      */
     public Farmacia() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -86,6 +87,11 @@ public class Farmacia extends javax.swing.JFrame {
         btnPedido.setFocusPainted(false);
         btnPedido.setFocusable(false);
         btnPedido.setIconTextGap(10);
+        btnPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panPedidoLayout = new javax.swing.GroupLayout(panPedido);
         panPedido.setLayout(panPedidoLayout);
@@ -115,6 +121,11 @@ public class Farmacia extends javax.swing.JFrame {
         btnVerPedidos.setIconTextGap(15);
         btnVerPedidos.setRequestFocusEnabled(false);
         btnVerPedidos.setRolloverEnabled(false);
+        btnVerPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPedidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panVerPedidoLayout = new javax.swing.GroupLayout(panVerPedido);
         panVerPedido.setLayout(panVerPedidoLayout);
@@ -172,6 +183,16 @@ public class Farmacia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
+        
+    }//GEN-LAST:event_btnPedidoActionPerformed
+
+    private void btnVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPedidosActionPerformed
+        verPedidos verPedidos = new verPedidos();
+        verPedidos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVerPedidosActionPerformed
 
     /**
      * @param args the command line arguments
