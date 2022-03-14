@@ -27,6 +27,7 @@ public class Farmacia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSucursal = new javax.swing.ButtonGroup();
         panTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panLeft = new javax.swing.JPanel();
@@ -35,11 +36,24 @@ public class Farmacia extends javax.swing.JFrame {
         panVerPedido = new javax.swing.JPanel();
         btnVerPedidos = new javax.swing.JButton();
         panCenter = new javax.swing.JPanel();
+        txtNombreProducto = new javax.swing.JTextField();
+        cmbProveedor = new javax.swing.JComboBox<>();
+        txtCantidadProducto = new javax.swing.JTextField();
+        cmbTipoProducto = new javax.swing.JComboBox<>();
+        btnBorrar = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
+        panSucursales = new javax.swing.JPanel();
+        jrbSucursalSimiHidalgo = new javax.swing.JRadioButton();
+        jrbSucursalSimiCentro = new javax.swing.JRadioButton();
+        jrbSucursalSimiPetrolera = new javax.swing.JRadioButton();
+        jrbSucursalSimiInfonavit = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panTop.setBackground(new java.awt.Color(54, 109, 161));
+        panTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panTop.setPreferredSize(new java.awt.Dimension(900, 80));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -55,7 +69,7 @@ public class Farmacia extends javax.swing.JFrame {
         panTopLayout.setHorizontalGroup(
             panTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTopLayout.createSequentialGroup()
-                .addContainerGap(334, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(217, 217, 217))
         );
@@ -64,12 +78,13 @@ public class Farmacia extends javax.swing.JFrame {
             .addGroup(panTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panTop, java.awt.BorderLayout.PAGE_START);
 
         panLeft.setBackground(new java.awt.Color(54, 109, 161));
+        panLeft.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panLeft.setPreferredSize(new java.awt.Dimension(200, 500));
 
         panPedido.setBackground(new java.awt.Color(54, 109, 161));
@@ -97,7 +112,7 @@ public class Farmacia extends javax.swing.JFrame {
         panPedido.setLayout(panPedidoLayout);
         panPedidoLayout.setHorizontalGroup(
             panPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
         );
         panPedidoLayout.setVerticalGroup(
             panPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,31 +167,144 @@ public class Farmacia extends javax.swing.JFrame {
                 .addComponent(panPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(panVerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         getContentPane().add(panLeft, java.awt.BorderLayout.LINE_START);
 
         panCenter.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel2.setText("Agregar pedido");
+        txtNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNombreProducto.setActionCommand("<Not Set>");
+        txtNombreProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        cmbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profarm ", "Bio-Mac Group", "Farmacon", "Vicma", "Uniparts" }));
+        cmbProveedor.setBorder(null);
+        cmbProveedor.setFocusable(false);
+
+        txtCantidadProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCantidadProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cantidad", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        cmbTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamentos", "Cosméticos", "Medicamentos herbarios", "Productos dietéticos y edulcorantes", "Productos biológicos" }));
+        cmbTipoProducto.setBorder(null);
+
+        btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnBorrar.setText("Borrar");
+
+        btnConfirmar.setBackground(new java.awt.Color(54, 109, 161));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmar.setText("Guardar");
+
+        panSucursales.setBackground(new java.awt.Color(255, 255, 255));
+        panSucursales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sucursal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        btgSucursal.add(jrbSucursalSimiHidalgo);
+        jrbSucursalSimiHidalgo.setText("Famarcia Simi Hidalgo");
+
+        btgSucursal.add(jrbSucursalSimiCentro);
+        jrbSucursalSimiCentro.setText("Famarcia Simi Centro");
+
+        btgSucursal.add(jrbSucursalSimiPetrolera);
+        jrbSucursalSimiPetrolera.setText("Famarcia Simi Petrolera");
+
+        jrbSucursalSimiInfonavit.setText("Farmacia Simi Infonavit");
+
+        javax.swing.GroupLayout panSucursalesLayout = new javax.swing.GroupLayout(panSucursales);
+        panSucursales.setLayout(panSucursalesLayout);
+        panSucursalesLayout.setHorizontalGroup(
+            panSucursalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panSucursalesLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(panSucursalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbSucursalSimiInfonavit)
+                    .addComponent(jrbSucursalSimiPetrolera)
+                    .addComponent(jrbSucursalSimiCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbSucursalSimiHidalgo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        panSucursalesLayout.setVerticalGroup(
+            panSucursalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panSucursalesLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jrbSucursalSimiHidalgo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbSucursalSimiCentro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbSucursalSimiPetrolera)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbSucursalSimiInfonavit)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Proveedor");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Tipo de producto");
 
         javax.swing.GroupLayout panCenterLayout = new javax.swing.GroupLayout(panCenter);
         panCenter.setLayout(panCenterLayout);
         panCenterLayout.setHorizontalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCenterLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jLabel2)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
+                        .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addComponent(panSucursales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panCenterLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jLabel2))
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel3)))
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134)
+                        .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117))))
         );
         panCenterLayout.setVerticalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCenterLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel2)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addGap(109, 109, 109)
+                .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panCenterLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(panSucursales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar)
+                    .addComponent(btnConfirmar))
+                .addGap(36, 36, 36))
         );
 
         getContentPane().add(panCenter, java.awt.BorderLayout.CENTER);
@@ -230,14 +358,27 @@ public class Farmacia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgSucursal;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnPedido;
     private javax.swing.JButton btnVerPedidos;
+    private javax.swing.JComboBox<String> cmbProveedor;
+    private javax.swing.JComboBox<String> cmbTipoProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton jrbSucursalSimiCentro;
+    private javax.swing.JRadioButton jrbSucursalSimiHidalgo;
+    private javax.swing.JRadioButton jrbSucursalSimiInfonavit;
+    private javax.swing.JRadioButton jrbSucursalSimiPetrolera;
     private javax.swing.JPanel panCenter;
     private javax.swing.JPanel panLeft;
     private javax.swing.JPanel panPedido;
+    private javax.swing.JPanel panSucursales;
     private javax.swing.JPanel panTop;
     private javax.swing.JPanel panVerPedido;
+    private javax.swing.JTextField txtCantidadProducto;
+    private javax.swing.JTextField txtNombreProducto;
     // End of variables declaration//GEN-END:variables
 }
