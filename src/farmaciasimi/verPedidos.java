@@ -35,11 +35,12 @@ public class verPedidos extends javax.swing.JFrame {
         panVerPedido = new javax.swing.JPanel();
         btnVerPedidos = new javax.swing.JButton();
         panCenter = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panTop.setBackground(new java.awt.Color(54, 109, 161));
+        panTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panTop.setPreferredSize(new java.awt.Dimension(900, 80));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -55,7 +56,7 @@ public class verPedidos extends javax.swing.JFrame {
         panTopLayout.setHorizontalGroup(
             panTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTopLayout.createSequentialGroup()
-                .addContainerGap(334, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(217, 217, 217))
         );
@@ -64,12 +65,13 @@ public class verPedidos extends javax.swing.JFrame {
             .addGroup(panTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panTop, java.awt.BorderLayout.PAGE_START);
 
         panLeft.setBackground(new java.awt.Color(54, 109, 161));
+        panLeft.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panLeft.setPreferredSize(new java.awt.Dimension(200, 500));
 
         panPedido.setBackground(new java.awt.Color(54, 109, 161));
@@ -97,7 +99,7 @@ public class verPedidos extends javax.swing.JFrame {
         panPedido.setLayout(panPedidoLayout);
         panPedidoLayout.setHorizontalGroup(
             panPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
         );
         panPedidoLayout.setVerticalGroup(
             panPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,31 +149,31 @@ public class verPedidos extends javax.swing.JFrame {
                 .addComponent(panPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(panVerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         getContentPane().add(panLeft, java.awt.BorderLayout.LINE_START);
 
         panCenter.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel2.setText("Ver Pedidos");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel3.setText("Coming soon...");
 
         javax.swing.GroupLayout panCenterLayout = new javax.swing.GroupLayout(panCenter);
         panCenter.setLayout(panCenterLayout);
         panCenterLayout.setHorizontalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(306, 306, 306))
+            .addGroup(panCenterLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jLabel3)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         panCenterLayout.setVerticalGroup(
             panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCenterLayout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jLabel2)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(169, 169, 169)
+                .addComponent(jLabel3)
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         getContentPane().add(panCenter, java.awt.BorderLayout.CENTER);
@@ -225,7 +227,7 @@ public class verPedidos extends javax.swing.JFrame {
     private javax.swing.JButton btnPedido;
     private javax.swing.JButton btnVerPedidos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panCenter;
     private javax.swing.JPanel panLeft;
     private javax.swing.JPanel panPedido;
