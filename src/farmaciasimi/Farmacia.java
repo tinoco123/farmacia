@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package farmaciasimi;
-
+import java.util.regex.Pattern;  
+import javax.swing.JOptionPane;
 /**
  *
  * @author tinoc
@@ -177,15 +178,25 @@ public class Farmacia extends javax.swing.JFrame {
         txtNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNombreProducto.setActionCommand("<Not Set>");
         txtNombreProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreProductoKeyTyped(evt);
+            }
+        });
 
-        cmbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Profarm ", "Bio-Mac Group", "Farmacon", "Vicma", "Uniparts" }));
+        cmbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar proveedor", "Profarm ", "Bio-Mac Group", "Farmacon", "Vicma", "Uniparts" }));
         cmbProveedor.setBorder(null);
         cmbProveedor.setFocusable(false);
 
         txtCantidadProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCantidadProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cantidad", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtCantidadProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadProductoKeyTyped(evt);
+            }
+        });
 
-        cmbTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamentos", "Cosméticos", "Medicamentos herbarios", "Productos dietéticos y edulcorantes", "Productos biológicos" }));
+        cmbTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar tipo", "Medicamentos", "Cosméticos", "Medicamentos herbarios", "Productos dietéticos y edulcorantes", "Productos biológicos" }));
         cmbTipoProducto.setBorder(null);
 
         btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -332,7 +343,7 @@ public class Farmacia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerPedidosActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // TODO add your handling code here:
+        validarDatos();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -345,6 +356,40 @@ public class Farmacia extends javax.swing.JFrame {
         btgSucursal.clearSelection();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
+    private void txtCantidadProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadProductoKeyTyped
+        if (!Character.isDigit(evt.getKeyChar())){
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtCantidadProductoKeyTyped
+
+    private void txtNombreProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyTyped
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreProductoKeyTyped
+
+    private void validarDatos(){
+        if (txtNombreProducto.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Completa el campo nombre de producto");
+        }
+        else if (txtCantidadProducto.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Completa el campo cantidad de producto");
+        }
+        else if (cmbProveedor.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Seleccione un proveedor");
+        }
+        else if (cmbTipoProducto.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Seleccione un tipo de producto");
+        }
+        
+        else if (!jrbSucursalSimiCentro.isSelected() && !jrbSucursalSimiHidalgo.isSelected() && !jrbSucursalSimiInfonavit.isSelected() && !jrbSucursalSimiPetrolera.isSelected()){
+           JOptionPane.showMessageDialog(null, "Seleccione una sucursal"); 
+        }
+        
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
