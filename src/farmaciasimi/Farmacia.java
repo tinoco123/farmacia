@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package farmaciasimi;
-import java.util.regex.Pattern;  
+import java.util.Enumeration;
+import java.util.HashMap; 
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 /**
  *
  * @author tinoc
@@ -344,6 +347,10 @@ public class Farmacia extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         validarDatos();
+        
+        jdConfirmacion confirmacion = new jdConfirmacion(this, true, guardarDatos());
+        confirmacion.setVisible(true);
+        confirmacion.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -388,7 +395,34 @@ public class Farmacia extends javax.swing.JFrame {
         
     }
     
+    public  HashMap<String, String> guardarDatos(){
     
+        HashMap<String, String> datos = new HashMap<>();
+        datos.put("nombre", txtNombreProducto.getText());
+        datos.put("cantidad", txtCantidadProducto.getText());
+        datos.put("proveedor", (String)cmbProveedor.getSelectedItem());
+        datos.put("tipoProducto", (String)cmbTipoProducto.getSelectedItem());
+        JRadioButton jrbSucursal  = getSelection(btgSucursal);
+        datos.put("sucursal",jrbSucursal.getText());
+            
+        return datos;
+            
+        }
+    
+    public static JRadioButton getSelection(ButtonGroup group)
+{
+        for (Enumeration e=group.getElements(); e.hasMoreElements(); )
+        {
+            JRadioButton b = (JRadioButton)e.nextElement();
+            if (b.getModel() == group.getSelection())
+            {
+                return b;
+            }
+        }
+
+        return null;
+}
+
     
     /**
      * @param args the command line arguments
