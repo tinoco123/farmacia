@@ -191,12 +191,22 @@ public class Farmacia extends javax.swing.JFrame {
         btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnBorrar.setText("Borrar");
         btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnConfirmar.setBackground(new java.awt.Color(54, 109, 161));
         btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmar.setText("Guardar");
         btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
 
         panSucursales.setBackground(new java.awt.Color(255, 255, 255));
         panSucursales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sucursal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
@@ -320,6 +330,20 @@ public class Farmacia extends javax.swing.JFrame {
         verPedidos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVerPedidosActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        
+        txtNombreProducto.setText("");
+        txtCantidadProducto.setText("");
+        cmbProveedor.setSelectedIndex(0);
+        cmbTipoProducto.setSelectedIndex(0);
+        btgSucursal.clearSelection();
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
     /**
      * @param args the command line arguments
