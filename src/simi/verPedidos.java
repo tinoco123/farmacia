@@ -221,7 +221,7 @@ public class verPedidos extends javax.swing.JFrame {
         panOpciones.add(txtBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, -1));
 
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setText("Editar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -267,6 +267,7 @@ public class verPedidos extends javax.swing.JFrame {
             jdActualizacion jdActualizacion = new jdActualizacion(this, true, id);
             jdActualizacion.setVisible(true);
             jdActualizacion.setLocationRelativeTo(this);
+            getPedidos();
         }
        
     }//GEN-LAST:event_btnActualizarActionPerformed
@@ -277,24 +278,23 @@ public class verPedidos extends javax.swing.JFrame {
             
         }else{
             Long id = (Long) tabPedidos.getValueAt(tabPedidos.getSelectedRow(), 0);
-             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
-             repositorio.eliminar(id);
-             JOptionPane.showMessageDialog(panOpciones, "Pedido eliminado correctamente", "Pedido Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
+            repositorio.eliminar(id);
+            JOptionPane.showMessageDialog(panOpciones, "Pedido eliminado correctamente", "Pedido Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            getPedidos();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
     private void getPedidos(){
-        try(Connection conn = DatabaseConnection.getInstance()){
+        
             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
             List<Pedido> lista = repositorio.listar();
             asignarDatosTabla(lista);            
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+        
     }
 
     
     private void buscarPorNombre(){
-        try(Connection conn = DatabaseConnection.getInstance() ){
+        
             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
             List<Pedido> lista = new ArrayList<>();         
             Pedido pedido = repositorio.porNombreProducto(txtBuscarNombre.getText());
@@ -307,10 +307,7 @@ public class verPedidos extends javax.swing.JFrame {
                 
             }
             
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
 
     }
     

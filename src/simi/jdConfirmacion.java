@@ -111,47 +111,22 @@ public class jdConfirmacion extends javax.swing.JDialog {
         txtNombreProducto.setEditable(false);
         txtNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNombreProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProductoActionPerformed(evt);
-            }
-        });
 
         txtCantidad.setEditable(false);
         txtCantidad.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtCantidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cantidad", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadActionPerformed(evt);
-            }
-        });
 
         txtSucursal.setEditable(false);
         txtSucursal.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtSucursal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sucursal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSucursalActionPerformed(evt);
-            }
-        });
 
         txtTipoProducto.setEditable(false);
         txtTipoProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtTipoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtTipoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoProductoActionPerformed(evt);
-            }
-        });
 
         txtProveedor.setEditable(false);
         txtProveedor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proveedor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProveedorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -227,26 +202,6 @@ public class jdConfirmacion extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProductoActionPerformed
-
-    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadActionPerformed
-
-    private void txtSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSucursalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSucursalActionPerformed
-
-    private void txtTipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoProductoActionPerformed
-
-    private void txtProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProveedorActionPerformed
 
     private void btnEnviarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPedidoActionPerformed
         

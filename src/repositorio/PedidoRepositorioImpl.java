@@ -30,7 +30,8 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     @Override
     public List<Pedido> listar() {
         List<Pedido> pedidos = new ArrayList<>();
-        try ( Statement statement = getConnection().createStatement();  ResultSet rs = statement.executeQuery("SELECT * FROM pedidos")) {
+        try ( Connection conn = getConnection();
+                Statement statement = conn.createStatement();  ResultSet rs = statement.executeQuery("SELECT * FROM pedidos")) {
 
             while (rs.next()) {
                 Pedido pedido = crearProducto(rs);
@@ -49,8 +50,9 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     public Pedido porNombreProducto(String nombreProducto) {
         Pedido pedido = null;
 
-        try ( PreparedStatement statement = getConnection().
-                prepareStatement("SELECT * FROM pedidos WHERE nombre_producto = ?")) {
+        try ( Connection conn = getConnection();
+              PreparedStatement statement = conn.
+              prepareStatement("SELECT * FROM pedidos WHERE nombre_producto = ?")) {
             statement.setString(1, nombreProducto);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -71,14 +73,15 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     public void guardar(Pedido pedido) {
         String query;
         if (pedido.getId() != null && pedido.getId() > 0){
-            query = "UPDATE pedidos SET nombre_producto = ?, tipo_producto = ?, cantidad = ?, proveedor = ?, sucursal = ? WHERE id == ?";
+            query = "UPDATE pedidos SET nombre_producto = ?, tipo_producto = ?, cantidad = ?, proveedor = ?, sucursal = ? WHERE id = ?";
             
         }else {
             query = "INSERT INTO pedidos(nombre_producto, tipo_producto, cantidad, proveedor, sucursal, fecha_pedido) VALUES(?, ?, ?, ?, ?, ?)";
 
         }
         
-        try ( PreparedStatement statement = getConnection().prepareStatement(query)) {
+        try ( Connection conn = getConnection();
+              PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, pedido.getNombreProducto());
             statement.setString(2, pedido.getTipoProducto());
             statement.setInt(3, pedido.getCantidad());
@@ -90,7 +93,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
                 statement.setDate(6, new Date(pedido.getFechaPedido().getTime())); 
             }
             
-
+            System.out.println(query);
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -100,7 +103,8 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
 
     @Override
     public void eliminar(Long id) {
-        try (PreparedStatement statement = getConnection().prepareStatement("DELETE FROM pedidos WHERE id == ?")){
+        try ( Connection conn = getConnection();
+              PreparedStatement statement = conn.prepareStatement("DELETE FROM pedidos WHERE id = ?")){
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {

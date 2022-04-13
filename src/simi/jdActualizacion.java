@@ -45,7 +45,7 @@ public class jdActualizacion extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnEnviarPedido = new javax.swing.JButton();
+        btnActualizarPedido = new javax.swing.JButton();
         btnCancelarPedido = new javax.swing.JButton();
         txtNombreProducto = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
@@ -85,13 +85,13 @@ public class jdActualizacion extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnEnviarPedido.setBackground(new java.awt.Color(54, 109, 161));
-        btnEnviarPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnEnviarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnviarPedido.setText("Actualizar Pedido");
-        btnEnviarPedido.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarPedido.setBackground(new java.awt.Color(54, 109, 161));
+        btnActualizarPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnActualizarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarPedido.setText("Actualizar Pedido");
+        btnActualizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarPedidoActionPerformed(evt);
+                btnActualizarPedidoActionPerformed(evt);
             }
         });
 
@@ -142,7 +142,7 @@ public class jdActualizacion extends javax.swing.JDialog {
                         .addGap(139, 139, 139)
                         .addComponent(btnCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEnviarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)))
                 .addGap(68, 68, 68))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +168,7 @@ public class jdActualizacion extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEnviarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnActualizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -193,8 +193,8 @@ public class jdActualizacion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEnviarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPedidoActionPerformed
-        
+    private void btnActualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPedidoActionPerformed
+        Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();        
         Pedido pedido = new Pedido();
         pedido.setId(id);
         pedido.setNombreProducto(txtNombreProducto.getText());
@@ -203,12 +203,12 @@ public class jdActualizacion extends javax.swing.JDialog {
         pedido.setProveedor(txtProveedor.getText());
         pedido.setSucursal(txtSucursal.getText());
         pedido.setFechaPedido(new Date());
-        Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
+        
         repositorio.guardar(pedido);
         JOptionPane.showMessageDialog(rootPane, "Tu pedido se ha realizado correctamente...");
         this.setVisible(false);
 
-    }//GEN-LAST:event_btnEnviarPedidoActionPerformed
+    }//GEN-LAST:event_btnActualizarPedidoActionPerformed
 
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
         this.setVisible(false);
@@ -260,8 +260,8 @@ public class jdActualizacion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarPedido;
     private javax.swing.JButton btnCancelarPedido;
-    private javax.swing.JButton btnEnviarPedido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
