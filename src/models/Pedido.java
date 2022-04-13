@@ -17,12 +17,14 @@ public class Pedido {
     private String proveedor;
     private Date fechaPedido;
 
-    public Pedido(String nombreProducto, String tipoProducto, int cantidad, String sucursal, String proveedor) {
+
+    public Pedido(String nombreProducto, String tipoProducto, int cantidad, String sucursal, String proveedor, Date fechaPedido) {
         this.nombreProducto = nombreProducto;
         this.tipoProducto = tipoProducto;
         this.cantidad = cantidad;
         this.sucursal = sucursal;
         this.proveedor = proveedor;
+        this.fechaPedido = fechaPedido;
     }
 
     public Pedido(Long id, String nombreProducto, String tipoProducto, int cantidad, String sucursal, String proveedor, Date fechaPedido) {

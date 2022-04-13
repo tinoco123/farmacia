@@ -30,7 +30,7 @@ public class verPedidos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         getPedidos();
-        
+        tabPedidos.getTableHeader().setReorderingAllowed(false) ;
         
         
     }
@@ -57,6 +57,8 @@ public class verPedidos extends javax.swing.JFrame {
         tabPedidos = new javax.swing.JTable();
         panOpciones = new javax.swing.JPanel();
         txtBuscarNombre = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -218,6 +220,24 @@ public class verPedidos extends javax.swing.JFrame {
         });
         panOpciones.add(txtBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, -1));
 
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        panOpciones.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 90, 30));
+
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        panOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 90, 30));
+
         panCenter.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 90));
 
         getContentPane().add(panCenter, java.awt.BorderLayout.CENTER);
@@ -237,6 +257,31 @@ public class verPedidos extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtBuscarNombreKeyReleased
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if (tabPedidos.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(panOpciones, "Seleccione un pedido", "Ningun pedido seleccionado", JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            Long id = (Long) tabPedidos.getValueAt(tabPedidos.getSelectedRow(), 0);
+            jdActualizacion jdActualizacion = new jdActualizacion(this, true, id);
+            jdActualizacion.setVisible(true);
+            jdActualizacion.setLocationRelativeTo(this);
+        }
+       
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (tabPedidos.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(panOpciones, "Seleccione un pedido", "Ningun pedido seleccionado", JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            Long id = (Long) tabPedidos.getValueAt(tabPedidos.getSelectedRow(), 0);
+             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
+             repositorio.eliminar(id);
+             JOptionPane.showMessageDialog(panOpciones, "Pedido eliminado correctamente", "Pedido Eliminado", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
     private void getPedidos(){
         try(Connection conn = DatabaseConnection.getInstance()){
             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
@@ -332,6 +377,8 @@ public class verPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnPedido;
     private javax.swing.JButton btnVerPedidos;
     private javax.swing.JLabel jLabel1;

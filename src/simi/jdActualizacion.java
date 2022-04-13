@@ -16,23 +16,18 @@ import repositorio.Repositorio;
  *
  * @author tinoc
  */
-public class jdConfirmacion extends javax.swing.JDialog {
-    HashMap<String, String> datos = new HashMap<>();
+public class jdActualizacion extends javax.swing.JDialog {
+    Long id;
     /**
      * Creates new form jdConfirmacion
      */
-    public jdConfirmacion(java.awt.Frame parent, boolean modal, HashMap<String, String> datos) {
+    public jdActualizacion(java.awt.Frame parent, boolean modal, Long id) {
         super(parent, modal);
         initComponents();
-        txtNombreProducto.setText(datos.get("nombre"));
-        txtCantidad.setText(datos.get("cantidad"));
-        txtProveedor.setText(datos.get("proveedor"));
-        txtSucursal.setText(datos.get("sucursal"));
-        txtTipoProducto.setText(datos.get("tipoProducto"));
-        this.datos = datos;
+        this.id = id;
     }
 
-    private jdConfirmacion(JFrame jFrame, boolean b) {
+    private jdActualizacion(JFrame jFrame, boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
@@ -93,7 +88,7 @@ public class jdConfirmacion extends javax.swing.JDialog {
         btnEnviarPedido.setBackground(new java.awt.Color(54, 109, 161));
         btnEnviarPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEnviarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnviarPedido.setText("Enviar Pedido");
+        btnEnviarPedido.setText("Actualizar Pedido");
         btnEnviarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarPedidoActionPerformed(evt);
@@ -101,57 +96,27 @@ public class jdConfirmacion extends javax.swing.JDialog {
         });
 
         btnCancelarPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCancelarPedido.setText("Cancelar Pedido");
+        btnCancelarPedido.setText("Cancelar ");
         btnCancelarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarPedidoActionPerformed(evt);
             }
         });
 
-        txtNombreProducto.setEditable(false);
         txtNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNombreProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProductoActionPerformed(evt);
-            }
-        });
 
-        txtCantidad.setEditable(false);
         txtCantidad.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtCantidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cantidad", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadActionPerformed(evt);
-            }
-        });
 
-        txtSucursal.setEditable(false);
         txtSucursal.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtSucursal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sucursal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSucursalActionPerformed(evt);
-            }
-        });
 
-        txtTipoProducto.setEditable(false);
         txtTipoProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtTipoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtTipoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoProductoActionPerformed(evt);
-            }
-        });
 
-        txtProveedor.setEditable(false);
         txtProveedor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proveedor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProveedorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -175,10 +140,10 @@ public class jdConfirmacion extends javax.swing.JDialog {
                                         .addGap(128, 128, 128))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(139, 139, 139)
-                        .addComponent(btnCancelarPedido)
+                        .addComponent(btnCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEnviarPedido)
-                        .addGap(33, 33, 33)))
+                        .addComponent(btnEnviarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addGap(68, 68, 68))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -228,29 +193,16 @@ public class jdConfirmacion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProductoActionPerformed
-
-    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadActionPerformed
-
-    private void txtSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSucursalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSucursalActionPerformed
-
-    private void txtTipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoProductoActionPerformed
-
-    private void txtProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProveedorActionPerformed
-
     private void btnEnviarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPedidoActionPerformed
         
-        Pedido pedido = new Pedido(datos.get("nombre"), datos.get("tipoProducto"), Integer.parseInt(datos.get("cantidad")), datos.get("sucursal"), datos.get("proveedor"), new Date());
+        Pedido pedido = new Pedido();
+        pedido.setId(id);
+        pedido.setNombreProducto(txtNombreProducto.getText());
+        pedido.setTipoProducto(txtTipoProducto.getText());
+        pedido.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        pedido.setProveedor(txtProveedor.getText());
+        pedido.setSucursal(txtSucursal.getText());
+        pedido.setFechaPedido(new Date());
         Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
         repositorio.guardar(pedido);
         JOptionPane.showMessageDialog(rootPane, "Tu pedido se ha realizado correctamente...");
@@ -279,21 +231,23 @@ public class jdConfirmacion extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jdConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jdActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jdConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jdActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jdConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jdActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jdConfirmacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jdActualizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                jdConfirmacion dialog = new jdConfirmacion(new javax.swing.JFrame(), true);
+                jdActualizacion dialog = new jdActualizacion(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
