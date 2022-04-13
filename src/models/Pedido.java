@@ -98,7 +98,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Id: " + getId() + " Nombre producto : " + getNombreProducto() + "Tipo producto: " + getTipoProducto() + " Cantidad: " + getCantidad() + " Proveedor" + getProveedor()
+        return "Id: " + getId() + " Nombre producto : " + getNombreProducto() + " Tipo producto: " + getTipoProducto() + " Cantidad: " + getCantidad() + " Proveedor: " + getProveedor()
                 + " Sucursal: " + getSucursal() + " Fecha del pedido: " + getFechaPedido();
     }
 

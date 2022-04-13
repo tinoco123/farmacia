@@ -15,7 +15,7 @@ import java.util.List;
 public interface Repositorio<T> {
     List<T> listar();
 
-    T porId(Long id);
+    T porNombreProducto(String nombreProducto);
 
     void guardar(T t);
 

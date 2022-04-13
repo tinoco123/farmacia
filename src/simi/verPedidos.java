@@ -3,13 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package simi;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import repositorio.PedidoRepositorioImpl;
 import repositorio.Repositorio;
 import util.DatabaseConnection;
 import models.Pedido;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,8 +52,11 @@ public class verPedidos extends javax.swing.JFrame {
         panVerPedido = new javax.swing.JPanel();
         btnVerPedidos = new javax.swing.JButton();
         panCenter = new javax.swing.JPanel();
+        panTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabPedidos = new javax.swing.JTable();
+        panOpciones = new javax.swing.JPanel();
+        txtBuscarNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +77,7 @@ public class verPedidos extends javax.swing.JFrame {
         panTopLayout.setHorizontalGroup(
             panTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTopLayout.createSequentialGroup()
-                .addContainerGap(430, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(217, 217, 217))
         );
@@ -116,7 +124,9 @@ public class verPedidos extends javax.swing.JFrame {
         );
         panPedidoLayout.setVerticalGroup(
             panPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(panPedidoLayout.createSequentialGroup()
+                .addComponent(btnPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
 
         panVerPedido.setBackground(new java.awt.Color(54, 109, 161));
@@ -141,11 +151,21 @@ public class verPedidos extends javax.swing.JFrame {
         panVerPedido.setLayout(panVerPedidoLayout);
         panVerPedidoLayout.setHorizontalGroup(
             panVerPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVerPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(panVerPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panVerPedidoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnVerPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         panVerPedidoLayout.setVerticalGroup(
             panVerPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVerPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panVerPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panVerPedidoLayout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addComponent(btnVerPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)))
         );
 
         javax.swing.GroupLayout panLeftLayout = new javax.swing.GroupLayout(panLeft);
@@ -160,14 +180,17 @@ public class verPedidos extends javax.swing.JFrame {
             .addGroup(panLeftLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(panPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(panVerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         getContentPane().add(panLeft, java.awt.BorderLayout.LINE_START);
 
         panCenter.setBackground(new java.awt.Color(255, 255, 255));
+        panCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panTable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,16 +202,23 @@ public class verPedidos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabPedidos);
 
-        javax.swing.GroupLayout panCenterLayout = new javax.swing.GroupLayout(panCenter);
-        panCenter.setLayout(panCenterLayout);
-        panCenterLayout.setHorizontalGroup(
-            panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        panCenterLayout.setVerticalGroup(
-            panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-        );
+        panTable.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 470));
+
+        panCenter.add(panTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, 470));
+
+        panOpciones.setBackground(new java.awt.Color(255, 255, 255));
+        panOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtBuscarNombre.setToolTipText("Buscar por nombre");
+        txtBuscarNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar por nombre", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        txtBuscarNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarNombreKeyReleased(evt);
+            }
+        });
+        panOpciones.add(txtBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, -1));
+
+        panCenter.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 90));
 
         getContentPane().add(panCenter, java.awt.BorderLayout.CENTER);
 
@@ -200,42 +230,67 @@ public class verPedidos extends javax.swing.JFrame {
         farmacia.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnPedidoActionPerformed
+
+    private void txtBuscarNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarNombreKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           buscarPorNombre(); 
+        }
+        
+    }//GEN-LAST:event_txtBuscarNombreKeyReleased
     private void getPedidos(){
         try(Connection conn = DatabaseConnection.getInstance()){
             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
             List<Pedido> lista = repositorio.listar();
-            int listaSize = repositorio.listar().size();
-            Object datos[][] = new Object[listaSize][7];
-            
-            for (int i=0; i<repositorio.listar().size(); i++){
-                datos[i][0] = lista.get(i).getId();
-                datos[i][1] = lista.get(i).getNombreProducto();
-                datos[i][2] = lista.get(i).getTipoProducto();
-                datos[i][3] = lista.get(i).getCantidad();
-                datos[i][4] = lista.get(i).getSucursal();
-                datos[i][5] = lista.get(i).getProveedor();
-                datos[i][6] = lista.get(i).getFechaPedido();
-            }
-            
-            
-            DefaultTableModel tableModel = new DefaultTableModel(datos, new String [] {"Id", "Nombre del producto", "Tipo del producto", "Cantidad", "Sucursal", "Proveedor", "Fecha del pedido"}){
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                   //all cells false
-                   return false;
-    }
-            };
-            
-            
-            tabPedidos.setModel(tableModel);
-            
+            asignarDatosTabla(lista);            
         }catch(SQLException e){
             e.printStackTrace();
         }
     }
+
     
-    private void mostrarPedidos(){
+    private void buscarPorNombre(){
+        try(Connection conn = DatabaseConnection.getInstance() ){
+            Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
+            List<Pedido> lista = new ArrayList<>();         
+            Pedido pedido = repositorio.porNombreProducto(txtBuscarNombre.getText());
+            if (pedido == null){
+                JOptionPane.showMessageDialog(panOpciones, "No se encuentra el nombre del medicamento", "No existe", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                lista.add(pedido);
+                asignarDatosTabla(lista);
+                
+            }
+            
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    
+    private void asignarDatosTabla(List<Pedido> lista) {
+        int listaSize = lista.size();
+        Object datos[][] = new Object[listaSize][7];
         
+        for (int i=0; i<listaSize; i++){
+            datos[i][0] = lista.get(i).getId();
+            datos[i][1] = lista.get(i).getNombreProducto();
+            datos[i][2] = lista.get(i).getTipoProducto();
+            datos[i][3] = lista.get(i).getCantidad();
+            datos[i][4] = lista.get(i).getSucursal();
+            datos[i][5] = lista.get(i).getProveedor();
+            datos[i][6] = lista.get(i).getFechaPedido();
+        }
+        DefaultTableModel tableModel = new DefaultTableModel(datos, new String [] {"Id", "Nombre del producto", "Tipo del producto", "Cantidad", "Sucursal", "Proveedor", "Fecha del pedido"}){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
+        tabPedidos.setModel(tableModel);
     }
     
     /**
@@ -283,9 +338,12 @@ public class verPedidos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panCenter;
     private javax.swing.JPanel panLeft;
+    private javax.swing.JPanel panOpciones;
     private javax.swing.JPanel panPedido;
+    private javax.swing.JPanel panTable;
     private javax.swing.JPanel panTop;
     private javax.swing.JPanel panVerPedido;
     private javax.swing.JTable tabPedidos;
+    private javax.swing.JTextField txtBuscarNombre;
     // End of variables declaration//GEN-END:variables
 }
