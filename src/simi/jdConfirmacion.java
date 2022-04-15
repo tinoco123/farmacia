@@ -207,8 +207,11 @@ public class jdConfirmacion extends javax.swing.JDialog {
         
         Pedido pedido = new Pedido(datos.get("nombre"), datos.get("tipoProducto"), Integer.parseInt(datos.get("cantidad")), datos.get("sucursal"), datos.get("proveedor"), new Date());
         Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
-        repositorio.guardar(pedido);
-        JOptionPane.showMessageDialog(rootPane, "Tu pedido se ha realizado correctamente...");
+        if (repositorio.guardar(pedido)){
+            JOptionPane.showMessageDialog(this, "Tu pedido se ha realizado correctamente...", "Pedido realizado", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, "Intentalo mas tarde", "Error en el pedido", JOptionPane.ERROR_MESSAGE);
+        }
         this.setVisible(false);
 
     }//GEN-LAST:event_btnEnviarPedidoActionPerformed

@@ -17,7 +17,7 @@ public interface Repositorio<T> {
 
     T porNombreProducto(String nombreProducto);
 
-    void guardar(T t);
+    boolean guardar(T t);
 
     void eliminar(Long id);
 }

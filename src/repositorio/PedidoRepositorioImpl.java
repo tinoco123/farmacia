@@ -13,8 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import util.DatabaseConnection;
 
 /**
@@ -39,7 +38,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "No se puede listar los pedidos\n Inténtelo más tarde");
         }
 
         return pedidos;
@@ -62,7 +61,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
             }
             rs.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Un error ocurrió");
         }
 
         return pedido;
@@ -70,7 +69,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
 
     //Guardar y Actualizar
     @Override
-    public void guardar(Pedido pedido) {
+    public boolean guardar(Pedido pedido) {
         String query;
         if (pedido.getId() != null && pedido.getId() > 0){
             query = "UPDATE pedidos SET nombre_producto = ?, tipo_producto = ?, cantidad = ?, proveedor = ?, sucursal = ? WHERE id = ?";
@@ -93,11 +92,12 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
                 statement.setDate(6, new Date(pedido.getFechaPedido().getTime())); 
             }
             
-            System.out.println(query);
+            
             statement.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 
@@ -108,7 +108,8 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Un error ocurrió");
+
         }
     }
 

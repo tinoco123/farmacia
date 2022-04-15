@@ -281,22 +281,21 @@ public class Farmacia extends javax.swing.JFrame {
                         .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(panSucursales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNombreProducto))
-                        .addGap(64, 64, 64)
                         .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panCenterLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panCenterLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
+                                .addGap(67, 67, 67)
                                 .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panCenterLayout.createSequentialGroup()
-                                .addGap(72, 72, 72)
+                                .addGap(136, 136, 136)
                                 .addComponent(jLabel2))
                             .addGroup(panCenterLayout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel3)))
+                                .addGap(111, 111, 111)
+                                .addComponent(jLabel3))
+                            .addGroup(panCenterLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(95, 95, 95))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,8 +308,8 @@ public class Farmacia extends javax.swing.JFrame {
             .addGroup(panCenterLayout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panCenterLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
@@ -324,7 +323,7 @@ public class Farmacia extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCenterLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(panSucursales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(panCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar)
                     .addComponent(btnConfirmar))
@@ -352,6 +351,11 @@ public class Farmacia extends javax.swing.JFrame {
             confirmacion.setLocationRelativeTo(this);
 
             confirmacion.setVisible(true);
+            txtNombreProducto.setText("");
+            txtCantidadProducto.setText("");
+            cmbProveedor.setSelectedIndex(0);
+            cmbTipoProducto.setSelectedIndex(0);
+            btgSucursal.clearSelection();
         }
         
         
@@ -374,33 +378,34 @@ public class Farmacia extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidadProductoKeyTyped
 
     private void txtNombreProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyTyped
-        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isDigit(evt.getKeyChar())){
+        if (Character.isDigit(evt.getKeyChar()) || !Character.isAlphabetic(evt.getKeyChar())){
             evt.consume();
         }
+
     }//GEN-LAST:event_txtNombreProductoKeyTyped
 
     private boolean validarDatos(){
         if (txtNombreProducto.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Completa el campo nombre de producto");
+            JOptionPane.showMessageDialog(this, "Completa el campo nombre de producto");
             return false;
         }
-        else if (txtCantidadProducto.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Completa el campo cantidad de producto");
+        else if (txtCantidadProducto.getText().equals("") || txtCantidadProducto.getText().equals("0")){
+            JOptionPane.showMessageDialog(this, "Completa el campo cantidad de producto");
             return false;
 
         }
         else if (cmbProveedor.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Seleccione un proveedor");
+            JOptionPane.showMessageDialog(this, "Seleccione un proveedor");
             return false;
 
         }
         else if (cmbTipoProducto.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Seleccione un tipo de producto");
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de producto");
             return false;
         }
         
         else if (!jrbSucursalSimiCentro.isSelected() && !jrbSucursalSimiHidalgo.isSelected() && !jrbSucursalSimiInfonavit.isSelected() && !jrbSucursalSimiPetrolera.isSelected()){
-           JOptionPane.showMessageDialog(null, "Seleccione una sucursal"); 
+           JOptionPane.showMessageDialog(this, "Seleccione una sucursal"); 
            return false;
         }
         

@@ -4,16 +4,11 @@
  */
 package simi;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
 import repositorio.PedidoRepositorioImpl;
 import repositorio.Repositorio;
-import util.DatabaseConnection;
 import models.Pedido;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,6 +54,7 @@ public class verPedidos extends javax.swing.JFrame {
         txtBuscarNombre = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnRecargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,6 +198,7 @@ public class verPedidos extends javax.swing.JFrame {
 
             }
         ));
+        tabPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tabPedidos);
 
         panTable.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 470));
@@ -237,6 +234,15 @@ public class verPedidos extends javax.swing.JFrame {
             }
         });
         panOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 90, 30));
+
+        btnRecargar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRecargar.setText("Actualizar");
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarActionPerformed(evt);
+            }
+        });
+        panOpciones.add(btnRecargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 90, 30));
 
         panCenter.add(panOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 90));
 
@@ -284,6 +290,10 @@ public class verPedidos extends javax.swing.JFrame {
             getPedidos();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
+        getPedidos();
+    }//GEN-LAST:event_btnRecargarActionPerformed
     private void getPedidos(){
         
             Repositorio<Pedido> repositorio = new PedidoRepositorioImpl();
@@ -377,6 +387,7 @@ public class verPedidos extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnPedido;
+    private javax.swing.JButton btnRecargar;
     private javax.swing.JButton btnVerPedidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
