@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    private static String url = "jdbc:mysql://sql5.freemysqlhosting.net:3306/sql5486074?serverTimeZone='America/Mexico_City'";
-    private static String username = "sql5486074";
-    private static String password = "djFkwjFvDi";
+    private static String url = "jdbc:mysql://localhost:3306/farmacia?serverTimeZone='America/Mexico_City'";
+    private static String username = "root";
+    private static String password = "jontutos123";
     private static Connection connection;
 
     public static Connection getInstance() throws SQLException {
