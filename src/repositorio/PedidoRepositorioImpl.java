@@ -30,7 +30,8 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     public List<Pedido> listar() {
         List<Pedido> pedidos = new ArrayList<>();
         try ( Connection conn = getConnection();
-                Statement statement = conn.createStatement();  ResultSet rs = statement.executeQuery("SELECT * FROM pedidos")) {
+                Statement statement = conn.createStatement();  
+                ResultSet rs = statement.executeQuery("SELECT * FROM pedidos")) {
 
             while (rs.next()) {
                 Pedido pedido = crearProducto(rs);
@@ -72,7 +73,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     public boolean guardar(Pedido pedido) {
         String query;
         if (pedido.getId() != null && pedido.getId() > 0){
-            query = "UPDATE pedidos SET nombre_producto = ?, tipo_producto = ?, cantidad = ?, proveedor = ?, sucursal = ? WHERE id = ?";
+            query = "UPDATE pedidos SET nombre_producto = ?, tipo_producto = ?, cantidad = ?, proveedor = ?, sucursal = ? WHERE id_pedido = ?";
             
         }else {
             query = "INSERT INTO pedidos(nombre_producto, tipo_producto, cantidad, proveedor, sucursal, fecha_pedido) VALUES(?, ?, ?, ?, ?, ?)";
@@ -104,7 +105,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
     @Override
     public void eliminar(Long id) {
         try ( Connection conn = getConnection();
-              PreparedStatement statement = conn.prepareStatement("DELETE FROM pedidos WHERE id = ?")){
+              PreparedStatement statement = conn.prepareStatement("DELETE FROM pedidos WHERE id_pedido = ?")){
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -115,7 +116,7 @@ public class PedidoRepositorioImpl implements Repositorio<Pedido> {
 
     private Pedido crearProducto(ResultSet rs) throws SQLException {
         Pedido pedido = new Pedido();
-        pedido.setId(rs.getLong("id"));
+        pedido.setId(rs.getLong("id_pedido"));
         pedido.setNombreProducto(rs.getString("nombre_producto"));
         pedido.setTipoProducto(rs.getString("tipo_producto"));
         pedido.setCantidad(rs.getInt("cantidad"));

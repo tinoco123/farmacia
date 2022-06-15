@@ -17,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
  * @author tinoc
  */
 public class verPedidos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Farmacia
-     */
     public verPedidos() {
         initComponents();
         this.setLocationRelativeTo(this);

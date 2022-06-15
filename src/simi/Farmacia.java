@@ -14,9 +14,7 @@ import javax.swing.ButtonGroup;
  */
 public class Farmacia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Farmacia
-     */
+   
     public Farmacia() {
         initComponents();
         this.setLocationRelativeTo(this);
